@@ -5,9 +5,7 @@
 //  Created by Diego Solis on 10/22/20.
 //
 
-#ifndef DoublyLinkedList_h
-#define DoublyLinkedList_h
-
+#pragma once
 #include "Node.h"
 #include "Queue.h"
 
@@ -28,36 +26,26 @@ public:
     void addLast(T data);
     bool deleteData(T data);
     bool deleteAt(int index);
+    void deleteLast();
     T getData(int index);
+    Node<T>* getPointer(int index);
+    T getHead();
+    T getTail();
     void updateAt(int index, T newData);
     void updateData(T data, T newData);
     void insertAt(int index, T newData);
     void duplicate();
     void removeDuplicates();
     int findData(T data);
+    int lowerBound(T data);
+    int upperBound(T data);
     void sort();
     void clear();
     void print();
     void printReverse();
     bool isEmpty();
     int getSize();
-    bool deleteLast();
 };
-
-template<class T>
-bool DoublyLinkedList<T>::deleteLast() {
-    if (!isEmpty()) {
-        Node<T>* aux = tail;
-        tail = tail-> prev;
-        if (tail == NULL) {
-            head = NULL;
-        }
-        return true;
-        delete aux;
-    } else {
-        return false;
-    }
-}
 
 template<class T>
 DoublyLinkedList<T>::DoublyLinkedList() {
@@ -129,7 +117,7 @@ void DoublyLinkedList<T>::addFirst(T data) {
 template<class T>
 void DoublyLinkedList<T>::addLast(T data) {
     if (!isEmpty()) {
-        tail->next = new Node<T>(data,NULL, tail);
+        tail->next = new Node<T>(data, tail->next, tail);
         tail = tail->next;
     } else {
         tail = new Node<T>(data);
@@ -183,13 +171,12 @@ bool DoublyLinkedList<T>::deleteAt(int index) {
         if (index == 1) {
             Node<T>* aux = head;
             head = aux->next;
-            if (head == NULL) {
-                tail = NULL;
-            } else {
-                head->prev = NULL;
-            }
+            head->prev = NULL;
             delete aux;
             size--;
+            if (head == NULL) {
+                tail = NULL;
+            }
             return true;
         } else {
             if (head->next != NULL) {
@@ -220,6 +207,19 @@ bool DoublyLinkedList<T>::deleteAt(int index) {
 }
 
 template<class T>
+void DoublyLinkedList<T>::deleteLast(){
+    if (!isEmpty()){
+        Node<T>* aux = tail;
+        tail = tail->prev;
+        if (tail == NULL){ //if the list is emptied
+            head = NULL;
+        }
+        delete aux;
+        size--;
+    }
+}
+
+template<class T>
 T DoublyLinkedList<T>::getData(int index) {
     if (index >= 1 && index <= size) {
         if (index <= size / 2) {
@@ -243,6 +243,50 @@ T DoublyLinkedList<T>::getData(int index) {
                 i--;
             }
         }
+    }
+    throw out_of_range("Invalid position");
+}
+
+template<class T>
+Node<T>* DoublyLinkedList<T>::getPointer(int index) {
+    if (index >= 1 && index <= size) {
+        if (index <= size / 2) {
+            Node<T>* aux = head;
+            int i = 1; // The list starts with 1
+            while (aux != NULL) {
+                if (i == index) {
+                    return aux;
+                }
+                aux = aux->next;
+                i++;
+            }
+        } else {
+            Node<T>* aux = tail;
+            int i = size; // The list starts with 1
+            while (aux != NULL) {
+                if (i == index) {
+                    return aux;
+                }
+                aux = aux->prev;
+                i--;
+            }
+        }
+    }
+    throw out_of_range("Invalid position");
+}
+
+template<class T>
+T DoublyLinkedList<T>::getHead() {
+    if (!isEmpty()) {
+        return head->data;
+    }
+    throw out_of_range("Invalid position");
+}
+
+template<class T>
+T DoublyLinkedList<T>::getTail() {
+    if (!isEmpty()) {
+        return tail->data;
     }
     throw out_of_range("Invalid position");
 }
@@ -407,10 +451,94 @@ int DoublyLinkedList<T>::findData(T data) {
 }
 
 template<class T>
+int DoublyLinkedList<T>::lowerBound(T data) {
+    if (!isEmpty()) {
+        int ini = 1;
+        int fin = size;
+        int mid;
+        if (data <= getHead()) {
+            return 1;
+        }
+        if (data <= getTail()) {
+            while (ini < fin) {
+                mid = (ini + fin) / 2;
+                Node<T>* aux = getPointer(mid);
+                if (aux->data > data) {
+                    if (aux->prev->data < data) {
+                        return mid;
+                    } else {
+                        if (aux->prev->data == data) {
+                            return mid-1;
+                        } else {
+                            fin = mid-1;
+                        }
+                    }
+                } else {
+                    if (aux->data < data) {
+                        if (aux->next->data >= data) {
+                            return mid+1;
+                        } else {
+                            ini = mid+1;
+                        }
+                    } else {
+                        return mid;
+                    }
+                }
+            }
+        }
+    }
+    throw out_of_range("No hay datos en ese rango");
+}
+
+template<class T>
+int DoublyLinkedList<T>::upperBound(T data) {
+    if (!isEmpty()) {
+        int ini = 1;
+        int fin = size;
+        int mid;
+        if (data >= getTail()) {
+            return fin;
+        }
+        if (data >= getHead()) {
+            while (ini < fin) {
+                mid = (ini + fin) / 2;
+                Node<T>* aux = getPointer(mid);
+                if (aux->data > data) {
+                    if (aux->prev->data < data) {
+                        return mid-1;
+                    } else {
+                        if (aux->prev->data == data) {
+                            return mid-1;
+                        } else {
+                            fin = mid-1;
+                        }
+                    }
+                } else {
+                    if (aux->data < data) {
+                        if (aux->next->data > data) {
+                            return mid;
+                        } else {
+                            if (aux->next->data == data) {
+                                return mid+1;
+                            } else {
+                                ini = mid+1;
+                            }
+                        }
+                    } else {
+                        return mid;
+                    }
+                }
+            }
+        }
+    }
+    throw out_of_range("No hay datos en ese rango");
+}
+
+template<class T>
 void DoublyLinkedList<T>::duplicate() {
-    // NodeD<T>* aux = head;
+    // Node<T>* aux = head;
     // while (aux != NULL) {
-    //     aux->next = new NodeD<T>(aux->data,aux->next);
+    //     aux->next = new Node<T>(aux->data,aux->next);
     //     size++;
     //     aux = aux->next->next;
     // }
@@ -418,7 +546,7 @@ void DoublyLinkedList<T>::duplicate() {
 
 template<class T>
 void DoublyLinkedList<T>::removeDuplicates() {
-    // NodeD<T>* aux = head;
+    // Node<T>* aux = head;
     // DoublyLinkedList<T> list = *this;
     // clear();
     // for (int i=1; i<list.size; i++) {
@@ -470,4 +598,3 @@ template<class T>
 int DoublyLinkedList<T>::getSize() {
     return size;
 }
-#endif

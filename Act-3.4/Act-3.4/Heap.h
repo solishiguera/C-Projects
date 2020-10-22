@@ -36,7 +36,7 @@ void Heap<T>::insertElement(T data) {
 
 // Complejidad O(n)
 template<class T>
-void HeapSort(DoublyLinkedList<T>& list, string order = "ascending") {
+void HeapSort(DoublyLinkedList<T> &list, string order = "ascending") {
     Heap<T> heapAux(list);
     list.clear();
     while (!heapAux.isEmpty()) {

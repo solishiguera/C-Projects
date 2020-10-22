@@ -7,25 +7,27 @@
 
 #pragma once
 
+
 template<class T>
 struct Node {
     T data;
-    Node<T>* left;
-    Node<T>* right;
+    Node<T>* next;
+    Node<T>* prev;
     Node(T data);
-    Node(T data, Node<T>* left, Node<T>* right);
+    Node(T data, Node<T>* next, Node<T>* prev);
 };
 
 template <class T>
 Node<T>::Node(T data) {
     this->data = data;
-    this->left = NULL;
-    this->right = NULL;
+    this->next = NULL;
+    this->prev = NULL;
 }
 
 template <class T>
-Node<T>::Node(T data, Node<T>* left, Node<T>* right) {
+Node<T>::Node(T data, Node<T>* next, Node<T>* prev) {
     this->data = data;
-    this->left = left;
-    this->right = right;
+    this->next = next;
+    this->prev = prev;
 }
+
