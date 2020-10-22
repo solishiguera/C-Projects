@@ -131,10 +131,8 @@ T DLL<T>::getData(int index) {
 
 template <class T>
 void DLL<T>::updateAt(int index, T newData) {
-    if (index >= 1 & index <= size)
-    {
-        if(index < size/2)
-        {
+    if (index >= 1 & index <= size){
+        if(index < size / 2) {
             DLLNode<T>* aux = head;
             int i = 1;
             while (aux != NULL)
@@ -148,12 +146,10 @@ void DLL<T>::updateAt(int index, T newData) {
                 i++;
             }
         }
-        else
-        {
+        else {
             DLLNode<T>* aux = tail;
             int i = size;
-            while (aux != NULL)
-            {
+            while (aux != NULL) {
                 if (i == index)
                 {
                     aux->data = newData;
