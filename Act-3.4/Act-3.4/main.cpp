@@ -29,7 +29,6 @@ void leerArchivo(DoublyLinkedList<string> &list) {
     while(archivoEntrada >> mes >> dia >> hora >> ipAddress) { // Lee toda la información
         getline(archivoEntrada, fallo); // Leer el mensaje de error de login
         fallo.erase(fallo.begin());
-        ipAddress = ipAddress.substr(0,13);
         list.addLast(ipAddress);
     }
     archivoEntrada.close();
@@ -45,12 +44,12 @@ void createObject(DoublyLinkedList<string> list, DoublyLinkedList<Registro> &lis
     string ipActual;
     
     while (cont < size) {
-        while(list[cont] == list[cont + 1] && cont < size - 1) {
-            /* Cuenta la cantidad de veces que se repite un IP */
+        while(list[cont].substr(0,13) == list[cont + 1].substr(0,13) && cont < size - 1) {
+            /* Cuenta la cantidad de veces que se repite un IP, y no toma en cuenta el puerto */
             cantVeces++;
             cont++;
         }
-        ipActual = list[cont];
+        ipActual = list[cont].substr(0,13);
         miRegistro = Registro(ipActual, cantVeces);
         listaRegistros.addLast(miRegistro); // Se almacena objeto de tipo Registro
         cantVeces = 1;
