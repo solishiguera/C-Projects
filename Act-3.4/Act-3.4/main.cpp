@@ -37,7 +37,7 @@ void createObject(DoublyLinkedList<string> list, DoublyLinkedList<Registro> &lis
     Registro miRegistro;
     int size = list.getSize();
     int cont = 1;
-    int cantVeces = 0;
+    int cantVeces = 1;
     string ipActual;
     
     while (cont < size) {
@@ -45,9 +45,10 @@ void createObject(DoublyLinkedList<string> list, DoublyLinkedList<Registro> &lis
             cantVeces++;
             cont++;
         }
+        ipActual = list[cont];
         miRegistro = Registro(ipActual, cantVeces);
         listaRegistros.addLast(miRegistro);
-        cantVeces = 0;
+        cantVeces = 1;
         cont++;
     }
     
@@ -61,6 +62,6 @@ int main() {
     leerArchivo(list);
     HeapSort(list);
     createObject(list, myList);
-    // Me quedé en que mi programa no carga Registros en createObject
+    
     return 0;
 }

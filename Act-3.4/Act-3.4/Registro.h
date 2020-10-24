@@ -14,9 +14,34 @@ struct Registro {
     Registro() {
         
     }
+    bool operator>(Registro r2);
+    bool operator>=(Registro r2);
+    bool operator<(Registro r2);
+    bool operator<=(Registro r2);
+    bool operator==(Registro r2);
 };
 
 Registro::Registro(string ip, int cant) {
     this-> ip = ip;
     this-> cant = cant;
+}
+
+bool Registro:: operator>(Registro r2) {
+    return cant > r2.cant;
+}
+
+bool Registro:: operator<(Registro r2) {
+    return cant < r2.cant;
+}
+
+bool Registro::operator==(Registro r2) {
+    return cant == r2.cant;
+}
+
+bool Registro::operator<=(Registro r2) {
+    return cant <= r2.cant;
+}
+
+bool Registro::operator>=(Registro r2) {
+    return cant >= r2.cant;
 }
