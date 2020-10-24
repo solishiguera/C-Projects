@@ -18,6 +18,8 @@ using namespace std;
  cd Documents/TEC/"SEMESTRE 3"/"Estructura de datos"/MyEvidences
  */
 
+// WHAT HAPPENED??
+
 void leerArchivo(DoublyLinkedList<string> &list) {
     string mes, hora, ipAddress, fallo;
     int dia;
@@ -56,6 +58,14 @@ void createObject(DoublyLinkedList<string> list, DoublyLinkedList<Registro> &lis
 }
 
 int main() {
+    
+    Registro uno;
+    uno = Registro("123", 4);
+    Registro dos;
+    dos = Registro("123", 6);
+    
+    bool oneIsGreater = uno > dos;
+    cout << oneIsGreater << endl;
     DoublyLinkedList<string> list;
     DoublyLinkedList<Registro> myList;
     Heap<string> ipHeap;
