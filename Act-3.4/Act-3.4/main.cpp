@@ -18,7 +18,7 @@ using namespace std;
  cd Documents/TEC/"SEMESTRE 3"/"Estructura de datos"/MyEvidences
  */
 
-// WHAT HAPPENED??
+
 
 void leerArchivo(DoublyLinkedList<string> &list) {
     string mes, hora, ipAddress, fallo;
