@@ -53,7 +53,7 @@ DoublyLinkedList<T>::DoublyLinkedList() {
     tail = NULL;
     size = 0;
 }
-
+// Complejidad O(n)
 template<class T>
 T& DoublyLinkedList<T>::operator[](int index) {
     if (index >= 1 && index <= size) {
@@ -82,6 +82,7 @@ T& DoublyLinkedList<T>::operator[](int index) {
     throw out_of_range("Invalid position");
 }
 
+// Complejidad O(n)
 template<class T>
 void DoublyLinkedList<T>::operator=(initializer_list<T> list) {
     if (isEmpty()) {
@@ -93,6 +94,7 @@ void DoublyLinkedList<T>::operator=(initializer_list<T> list) {
     }
 }
 
+// Complejidad O(n)
 template<class T>
 void DoublyLinkedList<T>::operator=(DoublyLinkedList<T> list) {
     clear();
@@ -102,6 +104,7 @@ void DoublyLinkedList<T>::operator=(DoublyLinkedList<T> list) {
 
 }
 
+// Complejidad O(1)
 template<class T>
 void DoublyLinkedList<T>::addFirst(T data) {
     if (!isEmpty()) {
@@ -114,6 +117,7 @@ void DoublyLinkedList<T>::addFirst(T data) {
     size++;
 }
 
+// Complejidad O(n)
 template<class T>
 void DoublyLinkedList<T>::addLast(T data) {
     if (!isEmpty()) {
@@ -126,6 +130,7 @@ void DoublyLinkedList<T>::addLast(T data) {
     size++;
 }
 
+// Complejidad O(n)
 template<class T>
 bool DoublyLinkedList<T>::deleteData(T data) {
     if (!isEmpty()) {
@@ -165,6 +170,7 @@ bool DoublyLinkedList<T>::deleteData(T data) {
     return false;
 }
 
+// Complejidad O(n)
 template<class T>
 bool DoublyLinkedList<T>::deleteAt(int index) {
     if (index >= 1 && index <= size) {
@@ -206,6 +212,7 @@ bool DoublyLinkedList<T>::deleteAt(int index) {
     return false;
 }
 
+// Complejidad O(1)
 template<class T>
 void DoublyLinkedList<T>::deleteLast(){
     if (!isEmpty()){
@@ -219,6 +226,7 @@ void DoublyLinkedList<T>::deleteLast(){
     }
 }
 
+// Complejidad O(n)
 template<class T>
 T DoublyLinkedList<T>::getData(int index) {
     if (index >= 1 && index <= size) {
@@ -247,6 +255,7 @@ T DoublyLinkedList<T>::getData(int index) {
     throw out_of_range("Invalid position");
 }
 
+// Complejidad O(n)
 template<class T>
 Node<T>* DoublyLinkedList<T>::getPointer(int index) {
     if (index >= 1 && index <= size) {
@@ -275,6 +284,7 @@ Node<T>* DoublyLinkedList<T>::getPointer(int index) {
     throw out_of_range("Invalid position");
 }
 
+// Complejidad O(1)
 template<class T>
 T DoublyLinkedList<T>::getHead() {
     if (!isEmpty()) {
@@ -283,6 +293,7 @@ T DoublyLinkedList<T>::getHead() {
     throw out_of_range("Invalid position");
 }
 
+// Complejidad O(1)
 template<class T>
 T DoublyLinkedList<T>::getTail() {
     if (!isEmpty()) {
@@ -291,6 +302,7 @@ T DoublyLinkedList<T>::getTail() {
     throw out_of_range("Invalid position");
 }
 
+// Complejidad O(n)
 template<class T>
 void DoublyLinkedList<T>::updateAt(int index, T newData) {
     if (index >= 1 && index <= size) {
@@ -321,6 +333,7 @@ void DoublyLinkedList<T>::updateAt(int index, T newData) {
     throw out_of_range("Invalid position");
 }
 
+// Complejidad O(n)
 template<class T>
 void DoublyLinkedList<T>::updateData(T data, T newData) {
     Node<T>* aux = head;
@@ -334,6 +347,7 @@ void DoublyLinkedList<T>::updateData(T data, T newData) {
     throw out_of_range("Data not found");
 }
 
+// Complejidad O(n)
 template<class T>
 void DoublyLinkedList<T>::insertAt(int index, T newData) {
     if (index >= 1 && index <= size) {
@@ -368,6 +382,7 @@ void DoublyLinkedList<T>::insertAt(int index, T newData) {
     throw out_of_range("Invalid position");
 }
 
+// Complejidad O(log(n))
 template<class T>
 void DoublyLinkedList<T>::merge(int ini, int mid, int fin) {
     Queue<T> listL;
@@ -406,6 +421,7 @@ void DoublyLinkedList<T>::merge(int ini, int mid, int fin) {
     }
 }
 
+// Complejidad O(log(n))
 template<class T>
 void DoublyLinkedList<T>::mergeSort(int ini, int fin) {
     if (ini < fin) {
@@ -417,11 +433,13 @@ void DoublyLinkedList<T>::mergeSort(int ini, int fin) {
     }
 }
 
+// Complejidad O(log(n))
 template<class T>
 void DoublyLinkedList<T>::sort() {
     mergeSort(1,size);
 }
 
+// Complejidad O(n)
 template<class T>
 int DoublyLinkedList<T>::findData(T data) {
     int posI = 1;
@@ -450,6 +468,7 @@ int DoublyLinkedList<T>::findData(T data) {
     }
 }
 
+// Complejidad O(n)
 template<class T>
 int DoublyLinkedList<T>::lowerBound(T data) {
     if (!isEmpty()) {
@@ -490,6 +509,7 @@ int DoublyLinkedList<T>::lowerBound(T data) {
     throw out_of_range("No hay datos en ese rango");
 }
 
+// Complejidad O(n)
 template<class T>
 int DoublyLinkedList<T>::upperBound(T data) {
     if (!isEmpty()) {
@@ -534,38 +554,42 @@ int DoublyLinkedList<T>::upperBound(T data) {
     throw out_of_range("No hay datos en ese rango");
 }
 
+// Complejidad O(n)
 template<class T>
 void DoublyLinkedList<T>::duplicate() {
-    // Node<T>* aux = head;
-    // while (aux != NULL) {
-    //     aux->next = new Node<T>(aux->data,aux->next);
-    //     size++;
-    //     aux = aux->next->next;
-    // }
+     Node<T>* aux = head;
+     while (aux != NULL) {
+         aux->next = new Node<T>(aux->data,aux->next);
+         size++;
+         aux = aux->next->next;
+     }
 }
 
+// Complejidad O(n)
 template<class T>
 void DoublyLinkedList<T>::removeDuplicates() {
-    // Node<T>* aux = head;
-    // DoublyLinkedList<T> list = *this;
-    // clear();
-    // for (int i=1; i<list.size; i++) {
-    //     if (!findData(aux->data)) {
-    //         addLast(aux->data);
-    //     }
-    // }
+     Node<T>* aux = head;
+     DoublyLinkedList<T> list = *this;
+     clear();
+     for (int i = 1; i < list.size; i++) {
+         if (!findData(aux->data)) {
+             addLast(aux->data);
+         }
+     }
 }
 
+// Complejidad O(n)
 template<class T>
 void DoublyLinkedList<T>::print() {
     Node<T>* aux = head;
-    for (int i=1; i<=size; i++) {
+    for (int i = 1; i <= size; i++) {
         cout << aux->data << " ";
         aux = aux->next;
     }
     cout << endl;
 }
 
+// Complejidad O(n)
 template<class T>
 void DoublyLinkedList<T>::printReverse() {
     Node<T>* aux = tail;
@@ -576,6 +600,7 @@ void DoublyLinkedList<T>::printReverse() {
     cout << endl;
 }
 
+// Complejidad O(n)
 template<class T>
 void DoublyLinkedList<T>::clear() {
     int i = 1;
@@ -589,11 +614,13 @@ void DoublyLinkedList<T>::clear() {
     tail = NULL;
 }
 
+// Complejidad O(1)
 template<class T>
 bool DoublyLinkedList<T>::isEmpty() {
     return size == 0;
 }
 
+// Complejidad O(1)
 template<class T>
 int DoublyLinkedList<T>::getSize() {
     return size;
