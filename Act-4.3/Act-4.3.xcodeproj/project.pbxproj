@@ -25,6 +25,8 @@
 /* Begin PBXFileReference section */
 		44156E18256B194500B740C5 /* Act-4.3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Act-4.3"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44156E1B256B194500B740C5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		44B67EC4257B1997007A08D3 /* Graph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Graph.h; sourceTree = "<group>"; };
+		44B67EC6257B1BFB007A08D3 /* Bitacora.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Bitacora.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,8 @@
 			isa = PBXGroup;
 			children = (
 				44156E1B256B194500B740C5 /* main.cpp */,
+				44B67EC6257B1BFB007A08D3 /* Bitacora.txt */,
+				44B67EC4257B1997007A08D3 /* Graph.h */,
 			);
 			path = "Act-4.3";
 			sourceTree = "<group>";
