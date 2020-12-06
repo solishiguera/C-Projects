@@ -27,6 +27,9 @@
 		44156E1B256B194500B740C5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		44B67EC4257B1997007A08D3 /* Graph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Graph.h; sourceTree = "<group>"; };
 		44B67EC6257B1BFB007A08D3 /* Bitacora.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Bitacora.txt; sourceTree = "<group>"; };
+		44B67ECA257C71A3007A08D3 /* Heap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Heap.h; sourceTree = "<group>"; };
+		44B67ECC257C74E6007A08D3 /* bitacoraTest.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = bitacoraTest.txt; sourceTree = "<group>"; };
+		44B67ECE257C91B3007A08D3 /* Registro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Registro.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +63,10 @@
 			isa = PBXGroup;
 			children = (
 				44156E1B256B194500B740C5 /* main.cpp */,
+				44B67ECE257C91B3007A08D3 /* Registro.h */,
+				44B67ECA257C71A3007A08D3 /* Heap.h */,
 				44B67EC6257B1BFB007A08D3 /* Bitacora.txt */,
+				44B67ECC257C74E6007A08D3 /* bitacoraTest.txt */,
 				44B67EC4257B1997007A08D3 /* Graph.h */,
 			);
 			path = "Act-4.3";
