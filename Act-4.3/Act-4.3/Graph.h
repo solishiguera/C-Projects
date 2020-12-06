@@ -15,13 +15,11 @@ private:
     vector<Registro> vertices;
     vector< vector< Registro > > adjList;
     int findVertex(Registro vertex); // Complejidad O(n)
-    void dfsR(T vertex, vector<bool> &status);
 public:
     void print(); // Complejidad O(n^2)
     Graph(vector<T> list); // Complejidad O(n)
-    void bfs(); // Complejidad O(n)
-    void dfs(); // Complejidad O(n)
     void addEdge(Registro &origen, Registro destino);
+    void giveMeTheGreatest();
 };
 
 template<class T>
@@ -54,64 +52,32 @@ int Graph<T>::findVertex(Registro vertex) {
     return - 1;
 }
 
-template<class T>
-void Graph<T>::bfs() {
-    int pos = vertices[0];
-    if (pos >= 0) {
-        vector<bool> status(size,false);
-        queue<int> q;
-        // agregamos el primer vertice a la fila
-        q.push(pos);
-        // Le cambiamos el status al primer vértice
-        status[pos] = true;
-        while (!q.empty()) {
-            int vertex = q.front();
-            cout << vertices[vertex] << " ";
-            for (auto adj : adjList[vertex]) {
-                int posAdj = findVertex(adj.target);
-                if (!status[posAdj]) {
-                    q.push(posAdj);
-                    status[posAdj] = true;
-                }
-            }
-            q.pop();
-        }
-        cout << endl;
-    }
-}
-
-
-template<class T>
-void Graph<T>::dfs() {
-    int pos = vertices[0];
-    if (pos >= 0) {
-        vector<bool> status(vertices.size(),false);
-        dfsR(pos,status);
-        cout << endl;
-    }
-}
-
-
-template<class T>
-void Graph<T>::dfsR(T vertex, vector<bool> &status) {
-    int pos = findVertex(vertex);
-    if (!status[pos]) {
-        cout << vertex << " ";
-        status[pos] = true;
-        for (auto adj : adjList[pos]) {
-            int posAdj = findVertex(adj.target);
-            if (!status[posAdj]) {
-                dfsR(adj.target,status);
-            }
-        }
-    }
-}
-
+// Complejidad O(n)
 template<class T>
 void Graph<T>::addEdge(Registro &origen, Registro destino) {
     int pos = findVertex(origen);
     adjList[pos].push_back(destino);
-    vertices[pos].cant += 1;
+    vertices[pos].addAdy();
 }
 
+//Complejidad O(nLog(n))
+template<class T>
+void Graph<T>::giveMeTheGreatest() {
+    vector<Registro> myHeap = vertices;
+    
+    make_heap(myHeap.begin(), myHeap.end());
+    
+    cout << "El más cool y social es: " << myHeap.front().ip << " con: " <<  myHeap.front().cant << " adyacencias :) " << endl;
+    ofstream archivoFinal;
+    archivoFinal.open("Salida.txt");
+    archivoFinal << " IP " << "\t \t \t Adyacencias" << endl;
+    
+    for (int i = 0; i < size; i++) {
+        archivoFinal << myHeap.front().ip <<  "\t \t \t" << myHeap.front().cant << endl;
+        pop_heap(myHeap.begin(), myHeap.end());
+        myHeap.pop_back();
+    }
+    
+    archivoFinal.close();
+}
 #endif

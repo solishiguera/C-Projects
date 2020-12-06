@@ -16,9 +16,9 @@ struct Registro {
     void addAdy();
     void deletePort(); // Borrar puerto
     void operator=(const Registro &R);
-    bool operator>(Registro r2);
+    bool operator>(const Registro r2) const;
     bool operator>=(Registro r2);
-    bool operator<(Registro r2);
+    bool operator<(const Registro r2) const;
     bool operator<=(Registro r2);
     bool operator==(Registro r2);
 };
@@ -51,13 +51,13 @@ Registro::Registro() {
 }
 
 // Complejidad O(1)
-bool Registro:: operator>(Registro r2) {
-    return this->cant > r2.cant;
+bool Registro:: operator>(Registro r2) const {
+    return cant > r2.cant;
 }
 
 // Complejidad O(1)
-bool Registro:: operator<(Registro r2) {
-    return this->cant < r2.cant;
+bool Registro::operator<(Registro r2) const {
+    return cant < r2.cant;
 }
 
 // Complejidad O(1)
