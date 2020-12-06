@@ -18,6 +18,8 @@ struct Registro {
     bool operator<(Registro r2);
     bool operator<=(Registro r2);
     bool operator==(Registro r2);
+    bool operator!=(Registro r2);
+    
 };
 
 // Complejidad O(1)
