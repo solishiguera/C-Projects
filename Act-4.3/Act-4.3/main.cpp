@@ -49,6 +49,5 @@ int main() {
     vector<Registro> list;
     Graph<Registro> grafo = listaVertices(list, cantidadIPs, cantidadEntradas);
     grafo.giveMeTheGreatest(); // Esta función determina la IP con más adyacencias
-    grafo.print(); 
     return 0;
 }

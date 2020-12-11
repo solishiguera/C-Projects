@@ -36,7 +36,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "/Users/diegosolis/Documents/TEC/SEMESTRE 3/Estructura de Datos/Act-2.3 2/Act-2.3"
+      customWorkingDirectory = "/Users/diegosolis/Documents/TEC/SEMESTRE 3/Estructura de Datos/MyEvidences/Act-5.2"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
