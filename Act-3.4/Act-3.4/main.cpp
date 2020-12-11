@@ -12,12 +12,6 @@ using namespace std;
 #include "Heap.h"
 #include "Registro.h"
 
-
-/*
- GIT
- cd Documents/TEC/"SEMESTRE 3"/"Estructura de datos"/MyEvidences
- */
-
 // Complejidad O(n)
 void leerArchivo(DoublyLinkedList<string> &list) {
     /* Lee archivo de entrada */
